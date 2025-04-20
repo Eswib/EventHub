@@ -19,6 +19,7 @@ app.config['SECRET_KEY'] = config.SECRET_KEY
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = 'static/photos'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg', 'gif'}
+db.init_app(app)
 
 # Mail Config
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -31,7 +32,6 @@ app.config['MAIL_DEFAULT_SENDER'] = 'eventhubconfirmation@gmail.com'
 mail = Mail(app)
 
 # Login Manager
-db.init_app(app)
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 login_manager.login_message = 'Du må være logget inn for å få tilgang til denne siden.'
