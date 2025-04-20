@@ -1,5 +1,7 @@
 Linje 17 og 18 i app.py må vel oppdateres før denne fungerer for dere
 
+MySQL dump med struktur og data ligger i db.sql
+
 Har lagt all innloggingsinfo for mail ligge som klartekst for enkelhets skyld (mail laget kun for denne)
 Lagde også en "glemt passord"-funksjon når mailen først var satt opp
 
