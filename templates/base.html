@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}EventHub{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <!--Sidebar-->
+    <div class="sidebar">        
+        <a href="{{ url_for('index') }}">Kommende arrangementer</a>
+        <a href="{{ url_for('my_events') }}">Mine arrangementer</a>
+        <a href="{{ url_for('create_event') }}">Nytt arrangement</a>
+    </div>
+    
+    <!--Topbar-->
+    <div class="topbar">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" height="50px" class="topbar-logo">
+        <div class="topbar-login">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('logout') }}">Logg ut</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Logg inn</a>
+            {% endif %}
+        </div>
+    </div> 
+    
+    <!--Content-->
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-message {{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

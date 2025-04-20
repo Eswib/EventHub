@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Logg inn</h1>
+    <form method="POST" action="/login" class="form">
+        <div>
+            <label for="epost">E-post:</label>
+            <input type="email" id="epost" name="epost" required>
+        </div>
+        <div>
+            <label for="passord">Passord:</label>
+            <input type="password" id="passord" name="passord" required>
+        </div>
+        <button type="submit">Logg inn</button>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </form>
+    <p>Har du ikke en konto? <a href="/register" class="link">Registrer deg</a></p>
+    <p>Glemt passordet ditt? <a href="{{ url_for('forgot_password')}}" class="link">Glemt passord</a></p>
+    {% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Opprett nytt arrangement</h1>
+    <form method="POST" action="/create_event" class="form" enctype="multipart/form-data">
+        <div>
+            <label for="navn">Navn på arrangement:</label>
+            <input type="text" id="navn" name="navn" required>
+        </div>
+        <div>
+            <label for="beskrivelse">Beskrivelse:</label>
+            <textarea id="beskrivelse" name="beskrivelse" rows="5" required></textarea>
+        </div>
+        <div>
+            <label for="dato">Dato og tidspunkt:</label>
+            <input type="datetime-local" id="dato" name="dato" required>
+        </div>
+        <div>
+            <label for="sted">Sted:</label>
+            <input type="text" id="sted" name="sted" required>
+        </div>
+        <div>
+            <label for="bilde">Bilde:</label>
+            <input type="file" id="bilde" name="bilde">
+            <small>Valgfritt</small>
+        </div>
+        <button type="submit">Opprett arrangement</button>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </form>
+    <p><a href="/" class="link">Tilbake til oversikten</a></p>
+
+{% endblock %}

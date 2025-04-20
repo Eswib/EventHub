@@ -1,0 +1,166 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    margin-bottom: 40px;
+    }
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Roboto, Arial, sans-serif;
+}
+
+h1 {
+text-decoration: underline; 
+}
+    
+.sidebar {
+    height: 100vh;
+    width: 230px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    background-color: #141414;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar a {
+    color: #ffffff;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+    background-color: #333333;
+}
+
+.topbar {
+    height: 60px;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    background-color: #1f1f1f;        
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+.topbar a {
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.topbar a:hover {
+    background-color: #333333;
+}
+
+.topbar-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.topbar-login {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    padding: 0 10px
+}
+
+.content {
+    margin-left: 300px;
+    margin-top: 100px;
+    padding: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.form label {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.form input,
+.form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form button {
+    font-size: 15px;
+}
+
+.link {
+    color: #aad7dc;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.search-form {
+    margin-bottom: 20px;
+}
+
+.search-form input {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.search-form button {
+    padding: 5px 10px;
+}
+
+.flash-messages {
+    margin: 20px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.flash-message {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.flash-message.success {
+    background-color: #28a745; 
+}
+
+.flash-message.warning {
+    background-color: #ffc107;
+    color: #000000;
+}
+
+.flash-message.danger {
+    background-color: #dc3545;
+}
+
+.flash-message.info {
+    background-color: #17a2b8
+}

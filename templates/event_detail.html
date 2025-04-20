@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>{{ arrangement.navn }}</h1>
+    {% if arrangement.bilde %}
+        <img src="{{ url_for('static', filename='photos/' + arrangement.bilde) }}" alt="{{ arrangement.navn }}" style="max-width: 300px;">
+    {% endif %}
+    <p>Beskrivelse: {{ arrangement.beskrivelse }}</p>
+    <p>Dato: {{ arrangement.dato.strftime('%d.%m.%Y %H:%M') }}</p>
+    <p>Sted: {{ arrangement.sted }}</p>
+    <p>Opprettet av: {{ oppretter.navn }} ({{ oppretter.epost }})</p>
+    <p>Antall påmeldte: {{ antall_påmeldte }}</p>
+
+    {% if current_user.is_authenticated %}
+        {% if påmeldt %}
+            <form method="POST" action="/unregister-from-event/{{ arrangement.id }}">
+                <button type="submit">Meld deg av</button>
+            </form>
+        {% else %}
+            <form method="POST" action="/register-for-event/{{ arrangement.id }}">
+                <button type="submit">Meld deg på</button>
+            </form>
+        {% endif %}
+    {% else %}
+        <p><a href="/login">Logg inn</a> for å melde deg på dette arrangementet.</p>
+    {% endif %}
+
+    <p><a href="/" class="link">Tilbake til oversikten</a></p>
+
+    {% endblock %}

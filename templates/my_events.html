@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Mine opprettede arrangementer</h1>
+    {% if arrangementer %}
+        <ul>
+            {% for arrangement in arrangementer %}
+                <li>
+                    <h2>{{ arrangement.navn }}</h2>
+                    <p>Dato: {{ arrangement.dato.strftime('%d.%m.%Y %H:%M') }}</p>
+                    <p>Sted: {{ arrangement.sted }}</p>
+                    <p>{{ arrangement.beskrivelse }}</p>
+                    <a href="{{ url_for('display_event', event_id=arrangement.id) }}" class="link">Se detaljer</a>
+                    <a href="{{ url_for('edit_event', event_id=arrangement.id) }}" class="link">Rediger</a>
+                    <form method="POST" action="{{ url_for('delete_event', event_id=arrangement.id) }}" style="display: inline;">
+                        <button type="submit" onclick="return confirm('Er du sikker på at du vil slette dette arrangementet?')">Slett</button>
+                    </form>
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Du har ikke opprettet noen arrangementer ennå.</p>
+    {% endif %}
+    <p><a href="/create_event" class="link">Opprett et nytt arrangement</a></p>
+    <p><a href="/" class="link">Tilbake til oversikten</a></p>
+    <br><br>
+    
+    <h1>Mine påmeldte arrangementer</h1>
+    {% if p_arrangementer %}
+        <ul>
+            {% for arrangement in p_arrangementer %}
+                <li>
+                    <h2>{{ arrangement.navn }}</h2>
+                    <p>Dato: {{ arrangement.dato.strftime('%d.%m.%Y %H:%M') }}</p>
+                    <p>Sted: {{ arrangement.sted }}</p>
+                    <p>{{ arrangement.beskrivelse }}</p>
+                    <a href="{{ url_for('display_event', event_id=arrangement.id) }}" class="link">Se detaljer</a>                    
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Du har ikke meldt deg på noen arrangementer ennå.</p>
+    {% endif %}
+    <p><a href="/" class="link">Tilbake til oversikten</a></p>
+
+{% endblock %}

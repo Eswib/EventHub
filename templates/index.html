@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<header>
+    <h1>Kommende Arrangementer</h1>
+
+    <form method="GET" action="/" class="search-form">
+        <input type="text" name="search" placeholder="Søk etter navn..." value="{{ search_query }}" />
+        <input type="date" name="date" value="{{ filter_date }}" />
+        <button type="submit">Søk</button>
+        <a href="/" class="link">Nullstill</a>
+    </form>
+
+    {% if arrangementer %}
+        <ul>
+            {% for arrangement in arrangementer %}
+                <li>
+                    <h2>{{ arrangement.navn }}</h2>
+                    {% if arrangement.bilde %}
+                        <img src="{{ url_for('static', filename='photos/' + arrangement.bilde) }}" alt="{{ arrangement.navn }}" style="max-width: 300px;">
+                    {% endif %}
+                    <p>Dato: {{ arrangement.dato.strftime('%d.%m.%Y %H:%M') }}</p>
+                    <p>Sted: {{ arrangement.sted }}</p>
+                    <p>{{ arrangement.beskrivelse }}</p>
+                    <a href="{{ url_for('display_event', event_id=arrangement.id) }}" class="link">
+                        Se detaljer og meld deg på
+                        {% if arrangement.id in påmeldte_arrangementer %}
+                            <span style="color: green;">✔</span>
+                        {% endif %}
+                    </a>
+                    
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Ingen kommende arrangementer for øyeblikket.</p>
+    {% endif %}
+</header>
+
+{% endblock %}

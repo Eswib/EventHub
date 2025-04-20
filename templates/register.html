@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Registrer deg</h1>
+    <form method="POST" action="/register" class="form">
+        <div>
+            <label for="navn">Navn:</label>
+            <input type="text" id="navn" name="navn" required>
+        </div>
+        <div>
+            <label for="epost">E-post:</label>
+            <input type="email" id="epost" name="epost" required>
+        </div>
+        <div>
+            <label for="passord">Passord:</label>
+            <input type="password" id="passord" name="passord" required>
+        </div>
+        <div>
+            <label for="bekreft_passord">Bekreft passord:</label>
+            <input type="password" id="bekreft_passord" name="bekreft_passord" required>
+        </div>
+        <button type="submit">Registrer</button>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </form>
+    <p>Har du allerede en konto? <a href="/login" class="link">Logg inn</a></p>
+{% endblock %}
